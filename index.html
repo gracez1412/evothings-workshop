@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no,
+		shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<title>Arduino Bluetooth</title>
+
+	<style>
+		@import 'ui/css/evothings-app.css';
+
+		.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+
+	<script>
+	// Redirect console.log to Evothings Workbench.
+	if (window.hyper && window.hyper.log) { console.log = hyper.log }
+	</script>
+
+</head>
+
+<body ontouchstart=""><!-- ontouchstart="" enables low-delay CSS transitions. -->
+
+	<header>
+		<button class="back" onclick="history.back()">
+			<img src="ui/images/arrow-left.svg" />
+		</button>
+
+		<!--<button class="menu" onclick=""><img src="ui/images/menu.svg" /></button>-->
+		<img class="logotype" src="ui/images/logo.svg" alt="Evothings" />
+	</header>
+
+	<script src="libs/jquery/jquery.js"></script>
+	<script src="cordova.js"></script>	
+	<script src="libs/evothings/evothings.js"></script>
+	<script src="libs/evothings/easyble/easyble.js"></script>
+	<script src="libs/evothings/ui/ui.js"></script>
+	<script src="app2.js"></script>
+	
+	<div>
+		<img id='finger_print' src = "https://icon-library.net/images/touch-id-icon/touch-id-icon-19.jpg" style="width:30%"  class="center" ontouchstart="app.startAccel()" ontouchend="app.stopAccel()"/>
+	</div>
+	<div>
+		<button id="reading" class="red wide">Acceleration</button>
+	</div>
+
+	<div>
+		<button id="scan" class="green wide" onclick="app.connect()" >SCAN</button>
+	</div>
+	<div>
+		<button class="red wide" onclick="app.disconnect()" >DISCONNECT</button>
+	</div>
+	<div>
+		<button class="blue wide" onclick="app.sendData([0x10])" >SEND DATA</button>
+	</div>
+
+</body>
+
+</html>
